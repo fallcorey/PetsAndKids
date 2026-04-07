@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Нижнее меню навигации -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="Главная" />
+
+    <item
+        android:id="@+id/navigation_family"
+        android:icon="@android:drawable/ic_menu_my_places"
+        android:title="Все" />
+
+    <item
+        android:id="@+id/navigation_diary"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Дневник" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Настройки" />
+
+</menu>
