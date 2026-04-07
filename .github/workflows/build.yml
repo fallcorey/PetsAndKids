@@ -1,35 +1,38 @@
 name: Сборка APK
 
-# Когда запускать сборку
 on:
-  push:  # Когда ты загружаешь новые файлы
-    branches: [ main ]  # В главную ветку
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:  # Можно запустить вручную
+  workflow_dispatch:
 
-# Что делать при сборке
 jobs:
   build:
-    runs-on: ubuntu-latest  # Используем компьютер Ubuntu в облаке
+    runs-on: ubuntu-latest
     
     steps:
     - name: Загружаем код
-      uses: actions/checkout@v4  # Тут тоже лучше обновить до v4
+      uses: actions/checkout@v4
       
     - name: Устанавливаем Java
-      uses: actions/setup-java@v4  # И здесь обновим до v4
+      uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
         
+    - name: Устанавливаем Gradle  # НОВЫЙ ШАГ!
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.0'
+        
     - name: Собираем APK
       run: |
         chmod +x gradlew
-        ./gradlew assembleRelease
+        ./gradlew assembleRelease --no-daemon
         
     - name: Загружаем APK
-      uses: actions/upload-artifact@v4  # ГЛАВНОЕ ИСПРАВЛЕНИЕ: v3 → v4
+      uses: actions/upload-artifact@v4
       with:
         name: app-release
         path: app/build/outputs/apk/release/*.apk
