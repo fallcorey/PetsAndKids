@@ -1,0 +1,59 @@
+// Настройки для приложения
+plugins {
+    id 'com.android.application'  // Плагин для Android приложений
+    id 'org.jetbrains.kotlin.android'  // Плагин для Kotlin
+}
+
+android {
+    namespace 'com.example.petsandkids'  // Уникальное имя приложения
+    compileSdk 33  // Версия Android для компиляции
+    
+    defaultConfig {
+        applicationId 'com.example.petsandkids'  // ID приложения
+        minSdk 21  // Минимальная версия Android (Android 5.0)
+        targetSdk 33  // Целевая версия Android
+        versionCode 1  // Номер версии (число)
+        versionName '1.0'  // Название версии
+        
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled false  // Не уменьшаем код (для простоты)
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+// Библиотеки, которые мы используем
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'  // Основные функции Android
+    implementation 'androidx.appcompat:appcompat:1.6.1'  // Поддержка старых версий
+    implementation 'com.google.android.material:material:1.8.0'  // Material Design компоненты
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'  // Для экранов
+    
+    // Для навигации между экранами
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    
+    // Для работы с базой данных (хранение данных)
+    implementation 'androidx.room:room-runtime:2.5.0'
+    implementation 'androidx.room:room-ktx:2.5.0'
+    kapt 'androidx.room:room-compiler:2.5.0'
+    
+    // Для работы с изображениями
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
+}
+
+// Добавляем поддержку Room
+apply plugin: 'kotlin-kapt'
