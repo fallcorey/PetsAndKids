@@ -15,10 +15,10 @@ jobs:
     
     steps:
     - name: Загружаем код
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # Тут тоже лучше обновить до v4
       
     - name: Устанавливаем Java
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4  # И здесь обновим до v4
       with:
         distribution: 'temurin'
         java-version: '17'
@@ -29,7 +29,7 @@ jobs:
         ./gradlew assembleRelease
         
     - name: Загружаем APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # ГЛАВНОЕ ИСПРАВЛЕНИЕ: v3 → v4
       with:
         name: app-release
         path: app/build/outputs/apk/release/*.apk
