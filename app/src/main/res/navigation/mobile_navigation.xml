@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Навигация между экранами -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_family">
+
+    <!-- Экран "Все" (пока только он работает) -->
+    <fragment
+        android:id="@+id/navigation_family"
+        android:name="com.example.petsandkids.FamilyFragment"
+        android:label="Все члены семьи" />
+
+    <!-- Заглушки для других экранов -->
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.petsandkids.FamilyFragment"
+        android:label="Главная" />
+
+    <fragment
+        android:id="@+id/navigation_diary"
+        android:name="com.example.petsandkids.FamilyFragment"
+        android:label="Дневник" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.petsandkids.FamilyFragment"
+        android:label="Настройки" />
+
+</navigation>
